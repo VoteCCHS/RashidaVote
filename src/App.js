@@ -16,12 +16,12 @@ function App() {
     try {
       // Save data to Firestore
       await addDoc(collection(db, "user"), { email, password });
-      alert("Data saved successfully!");
+      alert("Vote saved successfully!");
     } catch (error) {
       console.error("Error saving data: ", error);
       alert("Error saving data");
     }
-    alert("Data saved successfully!");
+    alert("Vote saved successfully!");
 
   };
 

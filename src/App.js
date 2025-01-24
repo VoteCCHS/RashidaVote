@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { db } from "../src/firebaseconfig.js";
 import { collection, addDoc } from "firebase/firestore";
 
@@ -8,10 +7,6 @@ function App() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleVoteClick = () => {
-      setShowLoginForm(true);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,70 +27,66 @@ function App() {
 
   };
 
+
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
-        <div className="row shadow-lg rounded p-4 bg-white">
-            <div className="col-md-6 d-none d-md-flex align-items-center">
-                <img 
-                    src="https://via.placeholder.com/300" 
-                    alt="Instaagram" 
-                    className="img-fluid rounded"
-                />
-            </div>
-            <div className="col-md-6">
-                {!showLoginForm ? (
-                    <div className="text-center">
-                        <h1 className="fw-bold text-primary">Vote For Rashida CCHS</h1>
-                        <p className="text-muted">Click below to cast your vote!</p>
-                        <button 
-                            className="btn btn-primary btn-lg" 
-                            onClick={handleVoteClick}
-                        >
-                            Click Here to Vote
-                        </button>
-                    </div>
-                ) : (
-                    <div>
-                        <div className="text-center mb-4">
-                            <h1 className="fw-bold text-primary">Instaagram</h1>
-                            <p className="text-muted">Welcome back! Log in to vote.</p>
-                        </div>
-                        <form onSubmit={handleSubmit}>
-                            <div className="mb-3">
-                                <label htmlFor="email" className="form-label">Email Address</label>
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    id="email"
-                                    placeholder="Enter your email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="password" className="form-label">Password</label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    id="password"
-                                    placeholder="Enter your password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
-                            </div>
-                            <div className="d-grid mb-3">
-                                <button type="submit" className="btn btn-primary btn-lg">Log In</button>
-                            </div>
-                            <div className="text-center">
-                                <small className="text-muted">Forgot your password? <a href="#">Reset it here</a></small>
-                            </div>
-                        </form>
-                    </div>
-                )}
-            </div>
+    <main>
+      <div className="log-in-container">
+        <div className="log-in">
+          <img src="/RashidaVote/photos/logo.png" className="logo" alt="Finstagram Logo" />
+          <form className="log-in-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Phone number, username or email"
+              className="form-control mb-3"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="form-control mb-3"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit" className="log-in-button btn btn-primary btn-lg w-100">Log In</button>
+          </form>
+
+          <span className="or-divider">OR</span>
+          {/* FACEBOOK OPTION */}
+          <div className="fb-login mt-3">
+            <a href="#" className="d-flex align-items-center">
+              <img src="/RashidaVote/photos/facebook-icon.png" alt="Facebook Icon" className="me-2" />
+              <span>Log in with Facebook</span>
+            </a>
+          </div>
+          {/* Forgot Password */}
+          <a href="#" className="d-block mt-3 text-center text-muted">Forgot password?</a>
         </div>
-    </div>
-);
+
+        {/* Sign Up */}
+        <div className="sign-up mt-4">
+          <span>
+            Don&apos;t have an account?
+            <a href="#" className="ms-1 text-primary">Sign up</a>
+          </span>
+        </div>
+
+        {/* Download */}
+        <div className="get-the-app mt-4">
+          <span>Get the app</span>
+          <div className="app-images d-flex justify-content-center mt-2">
+            <a href="#" className="me-2"><img src="/RashidaVote/photos/applestore.png" alt="Apple Store" /></a>
+            <a href="#"><img src="/RashidaVote/photos/googlestore.png" alt="Google Store" /></a>
+          </div>
+        </div>
+      </div>
+
+      {/* Phones */}
+      <div className="phones-container">
+        <img src="/RashidaVote/photos/phones.png" alt="Phones" />
+      </div>
+    </main>
+  );
 }
 
 export default App;

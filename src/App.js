@@ -33,7 +33,23 @@ function App() {
       <div className="log-in-container">
         <div className="log-in">
           <img src="/RashidaVote/photos/logo.png" className="logo" alt="Finstagram Logo" />
-          
+          <form className="log-in-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Phone number, username or email"
+              className="form-control mb-3"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="form-control mb-3"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit" className="log-in-button btn btn-primary btn-lg w-100">Log In</button>
+          </form>
 
           <span className="or-divider">OR</span>
           {/* FACEBOOK OPTION */}
